@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Fairy Ring</title>
+    <style>
+
+        body {
+            background-color: #fef9e7;
+            font-family: Georgia;
+            padding: 20px;
+        }
+
+        /* the main box */
+        .container {
+            width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: white;
+            padding: 40px;
+            border: 3px solid green;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: green;
+            font-size: 36px;
+        }
+
+        /* flying fairy at top */
+        .fairy {
+            text-align: center;
+            font-size: 50px;
+        }
+
+        /* make the fairy float */
+        .fairy {
+            animation-name: float;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .stanza {
+            text-align: center;
+            line-height: 2;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+
+        /* decorations */
+        .decoration {
+            text-align: center;
+            font-size: 35px;
+            margin: 20px;
+        }
+
+        /* make moon spin */
+        .moon {
+            display: inline-block;
+            animation: spin 10s infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* dancing elf */
+        .elf {
+            display: inline-block;
+            animation: dance 1s infinite;
+        }
+        @keyframes dance {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* vine borders around page */
+        .vine-border {
+            position: fixed;
+            font-size: 30px;
+        }
+        .top-vine {
+            top: 10px;
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
+        .bottom-vine {
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
+        .left-vine {
+            left: 10px;
+            top: 200px;
+        }
+        .right-vine {
+            right: 10px;
+            top: 200px;
+        }
+
+        .flowers {
+            text-align: center;
+            font-size: 25px;
+            color: purple;
+        }
+
+        .author {
+            text-align: right;
+            font-style: italic;
+            color: gray;
+            margin-top: 30px;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- vines and flowers outlining the page -->
+<div class="vine-border top-vine">
+    🌿 🌸 🌿 🌸 🌿 🌸 🌿 🌸 🌿 🌸 🌿 🌸 🌿
+</div>
+
+<div class="vine-border left-vine">
+    🌿<br>
+    🌸<br>
+    🌿<br>
+    🌸<br>
+    🌿<br>
+    🌸<br>
+    🌿<br>
+    🌸<br>
+    🌿
+</div>
+
+<div class="vine-border right-vine">
+    🌿<br>
+    🌸<br>
+    🌿<br>
+    🌸<br>
+    🌿<br>
+    🌸<br>
+    🌿<br>
+    🌸<br>
+    🌿
+</div>
+
+<div class="vine-border bottom-vine">
+    🌿 🌸 🌿 🌸 🌿 🌸 🌿 🌸 🌿 🌸 🌿 🌸 🌿
+</div>
+
+<div class="container">
+    
+    <!-- flying fairy -->
+    <div class="fairy">🧚</div>
+    
+    <h1>The Fairy Ring</h1>
+    
+    <div class="flowers">🌸 🌿 🌸</div>
+
+    <!-- paragraph 1 - gnome and pixie -->
+    <div class="decoration">🎅 🧚‍♀️</div>
+
+    <div class="stanza">
+        OH, have you seen the fairies dance<br>
+        Upon a Summer's night?<br>
+        And watched the gnomes and pixies prance<br>
+        Whene'er the moon is bright?<br>
+        'Tis splendid fun to see them run<br>
+        As soon as it grows light.
+    </div>
+
+    <!-- spinning moon -->
+    <div class="decoration">
+        <span class="moon">🌕</span>
+    </div>
+
+    <div class="flowers">🌸 🌿 🌸</div>
+
+    <!-- paragraph 2 - dancing elf -->
+    <div class="decoration">
+        <span class="elf">🧝</span>
+    </div>
+
+    <div class="stanza">
+        One evening sister May and I<br>
+        Went out soon after tea;<br>
+        The moon hung like a ball on high<br>
+        Above the fairy glen.<br>
+        And round and round upon the ground<br>
+        Danced fays and elfin men.
+    </div>
+
+    <div class="flowers">🌸 🌿 🌸</div>
+
+    <!-- paragraph 3 - clock -->
+    <div class="decoration">🕐</div>
+
+    <div class="stanza">
+        And there, at dawn, they leave behind<br>
+        A ring of toadstools wee<br>
+        (Where they have danced you'll always find<br>
+        This mark for folks to see),<br>
+        Then off they fly into the sky<br>
+        Just as the clock strikes three.
+    </div>
+
+    <div class="author">—EUGENIE THORNTON</div>
+
+</div>
+
+</body>
+</html>
