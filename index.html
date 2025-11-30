@@ -1,222 +1,554 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Fairy Ring</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quintessential&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        @font-face {
+            font-family: 'Shelley Script';
+            src: local('Shelley Allegro BT'), local('ShelleyAllegro'), local('Shelley Script');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
-            background-color: #fef9e7;
-            font-family: Georgia;
-            padding: 20px;
+            font-family: 'Quintessential', serif;
+            background: linear-gradient(135deg, #faf8f3 0%, #f5f0e6 50%, #ebe4d6 100%);
+            min-height: 100vh;
+            color: #5c5346;
+            overflow-x: hidden;
         }
 
-        /* the main box */
         .container {
+            position: relative;
+            max-width: 960px;
+            min-height: 100vh;
+            height: 100vh;
+            margin: 0 auto;
+            padding: 35px 55px;
+            overflow: hidden;
+        }
+
+        /* Decorative Images - Organic, hand-placed feel with natural rotation */
+        .vine-top {
+            position: absolute;
+            top: -50px;
+            right: -100px;
             width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            background-color: white;
-            padding: 40px;
-            border: 3px solid green;
-            border-radius: 10px;
+            height: auto;
+            opacity: 0.9;
+            z-index: 1;
+            transform: rotate(-3deg);
         }
 
-        h1 {
-            text-align: center;
-            color: green;
-            font-size: 36px;
+        .vine-bottom {
+            position: absolute;
+            bottom: -20px;
+            right: -80px;
+            width: 480px;
+            height: auto;
+            opacity: 0.85;
+            transform: rotate(178deg) scaleX(-1);
+            z-index: 1;
         }
 
-        /* flying fairy at top */
-        .fairy {
-            text-align: center;
-            font-size: 50px;
-        }
-
-        /* make the fairy float */
-        .fairy {
-            animation-name: float;
-            animation-duration: 3s;
-            animation-iteration-count: infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-
-        .stanza {
-            text-align: center;
-            line-height: 2;
-            margin-top: 30px;
-            margin-bottom: 30px;
-            font-size: 18px;
-        }
-
-        /* decorations */
-        .decoration {
-            text-align: center;
-            font-size: 35px;
-            margin: 20px;
-        }
-
-        /* make moon spin */
         .moon {
-            display: inline-block;
-            animation: spin 10s infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* dancing elf */
-        .elf {
-            display: inline-block;
-            animation: dance 1s infinite;
-        }
-        @keyframes dance {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+            position: absolute;
+            top: 50%;
+            left: 55%;
+            transform: translate(-50%, -50%) rotate(8deg);
+            width: 480px;
+            height: auto;
+            z-index: 0;
+            opacity: 0.97;
+            filter: drop-shadow(0 8px 40px rgba(168, 154, 124, 0.2));
         }
 
-        /* vine borders around page */
-        .vine-border {
-            position: fixed;
-            font-size: 30px;
-        }
-        .top-vine {
-            top: 10px;
-            left: 0;
-            right: 0;
-            text-align: center;
-        }
-        .bottom-vine {
-            bottom: 10px;
-            left: 0;
-            right: 0;
-            text-align: center;
-        }
-        .left-vine {
-            left: 10px;
-            top: 200px;
-        }
-        .right-vine {
-            right: 10px;
-            top: 200px;
+        .fairy {
+            position: absolute;
+            bottom: 20px;
+            left: -20px;
+            width: 320px;
+            height: auto;
+            z-index: 2;
+            opacity: 0.95;
+            filter: drop-shadow(0 4px 20px rgba(0,0,0,0.1));
+            transform: rotate(-2deg);
         }
 
         .flowers {
+            position: absolute;
+            bottom: -60px;
+            right: 10px;
+            width: 240px;
+            height: auto;
+            z-index: 0;
+            opacity: 0.85;
+            transform: rotate(6deg);
+        }
+
+        /* Title Styling - Dramatic, organic placement */
+        .title {
+            position: relative;
+            z-index: 3;
+            margin-left: -100px;
+        }
+
+        .title-the {
+            font-family: 'Shelley Script', 'Tangerine', cursive;
+            font-size: 10rem;
+            font-weight: 400;
+            color: #a89a7c;
+            line-height: 0.75;
+            margin-left: -15px;
+            letter-spacing: 3px;
+        }
+
+        .title-fairy {
+            font-family: 'Shelley Script', 'Tangerine', cursive;
+            font-size: 14rem;
+            font-weight: 400;
+            color: #b5a78b;
+            line-height: 0.8;
+            margin-left: 40px;
+            margin-top: -15px;
+            letter-spacing: 5px;
+            background: linear-gradient(175deg, #d4c4a8 0%, #a89a7c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .title-ring {
+            font-family: 'Shelley Script', 'Tangerine', cursive;
+            font-size: 12rem;
+            font-weight: 400;
+            color: #a89a7c;
+            letter-spacing: 5px;
+            margin-left: 120px;
+            margin-top: -25px;
+            background: linear-gradient(175deg, #d4c4a8 0%, #a89a7c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            z-index: 3;
+        }
+
+        /* Poem Stanzas - Organic flow around imagery */
+        .stanza {
+            font-family: 'Quintessential', serif;
+            font-size: 1.35rem;
+            line-height: 1.85;
+            color: #5a5245;
+            position: relative;
+            z-index: 3;
+            letter-spacing: 0.5px;
+        }
+
+        .stanza-1 {
+            position: absolute;
+            text-align: right;
+            max-width: 450px;
+            top: 280px;
+            right: 0;
+            z-index: 3;
+        }
+
+        .stanza-2 {
+            position: absolute;
             text-align: center;
-            font-size: 25px;
-            color: purple;
+            max-width: 420px;
+            top: 50%;
+            left: 5%;
+            transform: translateY(-50%);
+            z-index: 3;
+        }
+
+        .stanza-3 {
+            position: absolute;
+            text-align: right;
+            max-width: 420px;
+            bottom: 235px;
+            right: 0;
+            z-index: 3;
         }
 
         .author {
+            font-family: 'Quintessential', serif;
+            font-size: 1.1rem;
+            letter-spacing: 5px;
+            color: #5a5245;
             text-align: right;
-            font-style: italic;
-            color: gray;
-            margin-top: 30px;
+            position: absolute;
+            bottom: 100px;
+            right: 55px;
+            z-index: 3;
+            text-transform: uppercase;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 8px 16px 6px 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transform: rotate(-1deg);
         }
 
+        /* Responsive - Maintain organic feel */
+        @media (max-width: 900px) {
+            .title-the {
+                font-size: 6rem;
+            }
+
+            .title-fairy {
+                font-size: 8rem;
+                margin-left: 25px;
+            }
+
+            .title-ring {
+                font-size: 7rem;
+                margin-left: 70px;
+            }
+
+            .moon {
+                width: 380px;
+                left: 55%;
+            }
+
+            .stanza-2 {
+                left: 15%;
+                max-width: 280px;
+            }
+
+            .stanza-3 {
+                margin-top: 280px;
+            }
+
+            .fairy {
+                width: 260px;
+                left: -10px;
+            }
+
+            .vine-top {
+                width: 450px;
+                right: -70px;
+            }
+
+            .vine-bottom {
+                width: 380px;
+            }
+
+            .flowers {
+                width: 190px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+                height: auto;
+                min-height: 100vh;
+            }
+
+            .title-the {
+                font-size: 5rem;
+            }
+
+            .title-fairy {
+                font-size: 6.5rem;
+                margin-left: 20px;
+            }
+
+            .title-ring {
+                font-size: 5.5rem;
+                margin-left: 55px;
+            }
+
+            .stanza {
+                font-size: 1.1rem;
+            }
+
+            .stanza-1 {
+                max-width: 280px;
+                margin-top: -20px;
+            }
+
+            .stanza-2 {
+                position: relative;
+                top: auto;
+                left: auto;
+                transform: none;
+                max-width: 300px;
+                margin-top: 80px;
+                margin-left: -30px;
+            }
+
+            .stanza-3 {
+                max-width: 290px;
+                margin-top: 50px;
+            }
+
+            .moon {
+                width: 280px;
+                left: 55%;
+                top: 45%;
+            }
+
+            .fairy {
+                width: 200px;
+                bottom: 40px;
+                left: 0;
+            }
+
+            .vine-top {
+                width: 350px;
+                right: -50px;
+            }
+
+            .vine-bottom {
+                width: 300px;
+            }
+
+            .flowers {
+                width: 150px;
+                right: 40px;
+            }
+
+            .author {
+                font-size: 0.9rem;
+                right: 25px;
+                bottom: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+
+            .title-the {
+                font-size: 3.5rem;
+            }
+
+            .title-fairy {
+                font-size: 5rem;
+                margin-left: 15px;
+            }
+
+            .title-ring {
+                font-size: 4rem;
+                margin-left: 40px;
+            }
+
+            .stanza {
+                font-size: 0.95rem;
+                line-height: 1.7;
+            }
+
+            .moon {
+                width: 200px;
+                left: 50%;
+            }
+
+            .fairy {
+                width: 150px;
+            }
+
+            .vine-top {
+                width: 260px;
+            }
+
+            .vine-bottom {
+                width: 220px;
+            }
+
+            .flowers {
+                width: 110px;
+            }
+        }
+
+        /* Typewriter Effect */
+        .typewriter-line {
+            min-height: 1.75em;
+            position: relative;
+        }
+
+        .typewriter-line .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.1em;
+            background-color: #5d5548;
+            margin-left: 1px;
+            vertical-align: text-bottom;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        /* Title animations */
+        .title-the {
+            opacity: 0;
+            animation: fadeInTitle 1s ease forwards;
+            animation-delay: 0.1s;
+        }
+
+        .title-fairy {
+            opacity: 0;
+            animation: fadeInTitle 1s ease forwards;
+            animation-delay: 0.5s;
+        }
+
+        .title-ring {
+            opacity: 0;
+            animation: fadeInTitle 1s ease forwards;
+            animation-delay: 0.9s;
+        }
+
+        .author {
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .author.visible {
+            opacity: 1;
+        }
+
+        @keyframes fadeInTitle {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 <body>
+    <div class="container">
+        <!-- Decorative Elements -->
+        <img src="images/IMG_0530-removebg-preview.png" alt="Decorative vine" class="vine-top">
+        <img src="images/IMG_0530-removebg-preview.png" alt="Decorative vine" class="vine-bottom">
+        <img src="images/IMG_0543-removebg-preview.png" alt="Crescent moon" class="moon">
+        <img src="images/IMG_0540-removebg-preview.png" alt="Fairy silhouette" class="fairy">
+        <img src="images/IMG_0539-removebg-preview (1).png" alt="Flowers" class="flowers">
 
-<!-- vines and flowers outlining the page -->
-<div class="vine-border top-vine">
-    🌿 🌸 🌿 🌸 🌿 🌸 🌿 🌸 🌿 🌸 🌿 🌸 🌿
-</div>
+        <!-- Title -->
+        <div class="title">
+            <div class="title-the">The</div>
+            <div class="title-fairy">Fairy</div>
+            <div class="title-ring">Ring</div>
+        </div>
 
-<div class="vine-border left-vine">
-    🌿<br>
-    🌸<br>
-    🌿<br>
-    🌸<br>
-    🌿<br>
-    🌸<br>
-    🌿<br>
-    🌸<br>
-    🌿
-</div>
+        <!-- First Stanza -->
+        <div class="stanza stanza-1">
+            <div class="typewriter-line">OH, have you seen the fairies dance</div>
+            <div class="typewriter-line">Upon a Summer's night?</div>
+            <div class="typewriter-line">And watched the gnomes and pixies prance</div>
+            <div class="typewriter-line">Whene'er the moon is bright?</div>
+            <div class="typewriter-line">'Tis splendid fun to see them run</div>
+            <div class="typewriter-line">As soon as it grows light.</div>
+        </div>
 
-<div class="vine-border right-vine">
-    🌿<br>
-    🌸<br>
-    🌿<br>
-    🌸<br>
-    🌿<br>
-    🌸<br>
-    🌿<br>
-    🌸<br>
-    🌿
-</div>
+        <!-- Second Stanza -->
+        <div class="stanza stanza-2">
+            <div class="typewriter-line">One evening sister May and I</div>
+            <div class="typewriter-line">Went out soon after tea;</div>
+            <div class="typewriter-line">The moon hung like a ball on high</div>
+            <div class="typewriter-line">Above the fairy glen.</div>
+            <div class="typewriter-line">And round and round upon the ground</div>
+            <div class="typewriter-line">Danced fays and elfin men.</div>
+        </div>
 
-<div class="vine-border bottom-vine">
-    🌿 🌸 🌿 🌸 🌿 🌸 🌿 🌸 🌿 🌸 🌿 🌸 🌿
-</div>
+        <!-- Third Stanza -->
+        <div class="stanza stanza-3">
+            <div class="typewriter-line">And there, at dawn, they leave behind</div>
+            <div class="typewriter-line">A ring of toadstools wee</div>
+            <div class="typewriter-line">(Where they have danced you'll always find</div>
+            <div class="typewriter-line">This mark for folks to see),</div>
+            <div class="typewriter-line">Then off they fly into the sky</div>
+            <div class="typewriter-line">Just as the clock strikes three.</div>
+        </div>
 
-<div class="container">
-    
-    <!-- flying fairy -->
-    <div class="fairy">🧚</div>
-    
-    <h1>The Fairy Ring</h1>
-    
-    <div class="flowers">🌸 🌿 🌸</div>
-
-    <!-- paragraph 1 - gnome and pixie -->
-    <div class="decoration">🎅 🧚‍♀️</div>
-
-    <div class="stanza">
-        OH, have you seen the fairies dance<br>
-        Upon a Summer's night?<br>
-        And watched the gnomes and pixies prance<br>
-        Whene'er the moon is bright?<br>
-        'Tis splendid fun to see them run<br>
-        As soon as it grows light.
+        <!-- Author -->
+        <div class="author">EUGENIE THORNTON</div>
     </div>
 
-    <!-- spinning moon -->
-    <div class="decoration">
-        <span class="moon">🌕</span>
-    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const lines = document.querySelectorAll('.typewriter-line');
+            const author = document.querySelector('.author');
 
-    <div class="flowers">🌸 🌿 🌸</div>
+            // Store original text and clear lines
+            const texts = [];
+            lines.forEach((line, index) => {
+                texts[index] = line.textContent;
+                line.textContent = '';
+            });
 
-    <!-- paragraph 2 - dancing elf -->
-    <div class="decoration">
-        <span class="elf">🧝</span>
-    </div>
+            // Typing speed (ms per character)
+            const charSpeed = 45;
+            const lineDelay = 300;
+            const stanzaDelay = 600;
 
-    <div class="stanza">
-        One evening sister May and I<br>
-        Went out soon after tea;<br>
-        The moon hung like a ball on high<br>
-        Above the fairy glen.<br>
-        And round and round upon the ground<br>
-        Danced fays and elfin men.
-    </div>
+            let currentLine = 0;
+            let currentChar = 0;
+            let cursor = null;
 
-    <div class="flowers">🌸 🌿 🌸</div>
+            function createCursor() {
+                cursor = document.createElement('span');
+                cursor.className = 'cursor';
+                return cursor;
+            }
 
-    <!-- paragraph 3 - clock -->
-    <div class="decoration">🕐</div>
+            function typeCharacter() {
+                if (currentLine >= lines.length) {
+                    // All done - remove cursor and show author
+                    if (cursor) cursor.remove();
+                    setTimeout(() => {
+                        author.classList.add('visible');
+                    }, 400);
+                    return;
+                }
 
-    <div class="stanza">
-        And there, at dawn, they leave behind<br>
-        A ring of toadstools wee<br>
-        (Where they have danced you'll always find<br>
-        This mark for folks to see),<br>
-        Then off they fly into the sky<br>
-        Just as the clock strikes three.
-    </div>
+                const line = lines[currentLine];
+                const text = texts[currentLine];
 
-    <div class="author">—EUGENIE THORNTON</div>
+                if (!cursor || !line.contains(cursor)) {
+                    cursor = createCursor();
+                    line.appendChild(cursor);
+                }
 
-</div>
+                if (currentChar < text.length) {
+                    const charSpan = document.createTextNode(text[currentChar]);
+                    line.insertBefore(charSpan, cursor);
+                    currentChar++;
 
+                    const variance = Math.random() * 30 - 15;
+                    setTimeout(typeCharacter, charSpeed + variance);
+                } else {
+                    cursor.remove();
+                    currentLine++;
+                    currentChar = 0;
+
+                    const isStanzaEnd = currentLine === 6 || currentLine === 12;
+                    const delay = isStanzaEnd ? stanzaDelay : lineDelay;
+
+                    setTimeout(typeCharacter, delay);
+                }
+            }
+
+            // Start typing after title fades in
+            setTimeout(typeCharacter, 1800);
+        });
+    </script>
 </body>
 </html>
